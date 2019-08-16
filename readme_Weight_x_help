@@ -1,0 +1,100 @@
+This readme is specifically for the "in-order"/"WALTing" conversion.
+
+
+Introduction:
+
+"Orderby" is usually the keyword I have used for functions associated with
+"WALTing". Originally the idea was that the blocks are being compressed "in-order" - "by" "win-mean" Hence,Orderby. Agreeably not the best choice.
+
+
+
+
+Overview - 
+Inorder for the "in-order" conversion to work there is some onetime, overhead
+logistical work that needs to be done.
+
+1) Each small block is given a co-ordinate, and based upon some metric
+(Absolute mean,sum etc.) These blocks are sorted. 
+
+2) Based upon the ratio given, we decide how many of the first in line blocks
+to be popped.( 50% of the existing etc.) 
+    Active Co-ordinates : Still part of training
+    Passive Co-ordinates: Have been compressed
+
+3) Then iteratively one(simple) function call we keep compressing based
+    on the ratio given.
+
+    set_ordered_coords(self,metric = None,absolute=None) 
+    
+
+
+
+Functions: 
+
+def set_ordered_coords(self,metric = None,absolute = True):
+    -> setting up the co-ordinates in-order
+    -> HAS TO BE RUN BEFORE orderby_centraltendency_conversion can be called
+    metric: "mean", "sum" . metric on which sorting of co-ordinate will 
+    take place. 
+    -> absolute = True/False. 
+	Experimentally it was seen that using absolute values is better,
+	hence it was explicitly added as a arguement.
+	If False, all metrics will run on original values. 
+
+
+def orderby_centraltendency_conversion(self,conversion_type ="BCM",ratio =0.5,delete_num =0,testing = False):
+    Actually compression takes place in this function. 
+    converion_type : "BCM", "Toeplitz"
+    ratio: Number of blocks of total to compress inn each iteration 
+    delete_num: Used when testing is True. Run this function with testing:True
+		you will see.
+    testing: True/False, used for debugging. 
+    
+
+def setup_weights_forcompression(model,orderbymetric= True,metric_for_orderby = None,
+				 absolute = None,only_some_layers = False,which_layers = None , 
+				checking_function = None,args_dict = {},layer_type="fc")
+
+
+    This function is just their to make your life easy, and sets up all weights such that only 
+    orderby_centraltendency_conversion needs to be called thereafter.
+
+    model: keras model, tested with alexnet like architectures only. 
+    orderbymetric: True/False, if the overhead for WALTing needs to be performed or not.
+    metric_for_orderby: "mean","sum"
+    absolute:True/False
+    only_some_layers: True/False. 
+			True: If you want to manually give the index of layers that need to be set up.
+			False: If not
+    which_layers = List of indices for ex. For alexnet, which_layers = [18,24] valid arguement.
+		    Works if "only_some_layers" is True
+    checking_function: Function which shall check validity, see def check_on_blocksize for reference
+    args_dict: Dictionary of all arguements to checking_function, "Block_dim":(rows,cols) -- 
+		which is the block size that shall be used is an essential element. 
+    layer_type ="fc","conv" which type of layers to be setup. 
+
+
+
+
+
+FAQ's 
+
+What if i want to add a new metric ? 
+> def append_centraltendency_tuple_coords 
+add another if statement below the pre-existing one. Use the two given(mean
+and sum as reference)
+
+
+# Note: Weights_fc and Weights_conv are almost the same classes, Weights_fc was
+# written much before and hence has some shortcomings but since its tested quite
+# a bit. I have not changed it, if needed i can change it and combine both conv
+# and fc into one.
+
+# Known shortcomings of Weights_fc:
+#     1) It cannot take rectangular block sizes,Weights_conv can.
+#     2) It has a fixed criteria for formation of object, Weights_conv takes
+#     checking_function which user can define and have more intricate object
+#     creation criteria's
+#     3)BLOCK_SIZE is a Class variable so dynamic blocksizes is not an option.
+#        but that is not in option in Wiehgts_conv as well. Some changes will
+#        need to be made for that to be possible.
