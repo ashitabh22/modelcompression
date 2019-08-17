@@ -249,9 +249,9 @@ def convert(arr,block_size=(3,4) , central_tendency = "win_mean",cutting_ratio =
     row_end = block_size[0] - 1
     rows,cols = np.shape(arr)
     new_arr = np.copy(arr)
-    print(rows)
+    # print(rows)
     while ( row_end < rows ):
-        print(row_end)
+        # print(row_end)
         col_begin = 0
         col_end = block_size[1] -1
         while ( col_end < cols) :

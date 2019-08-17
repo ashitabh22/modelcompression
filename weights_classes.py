@@ -2,6 +2,7 @@ import numpy as np
 import math
 import tensorflow as tf
 from split_arr import convert
+from conv_conversions import resize_to_2D
 
 
 
@@ -19,36 +20,36 @@ from split_arr import convert
 #        but that is not in option in Wiehgts_conv as well. Some changes will
 #        need to be made for that to be possible.
 
-def resize_to_3D(my_array,filter_width,filter_depth,num_filters):
-    ctrx=0;
-    ctry=0;
-    my_conv=np.zeros([num_filters,filter_depth,filter_width,filter_width])
-    for j in range(0,np.shape(my_array)[1],filter_width):
-        for i in range(0,np.shape(my_array)[0],filter_depth):
-            my_conv[ctry,:,:,ctrx]=my_array[i:i+filter_depth,j:j+filter_width]
-            ctrx=ctrx+1
-        ctrx=0
-        ctry=ctry+1
-    converted_conv=my_conv.transpose()
-    return converted_conv
+# def resize_to_3D(my_array,filter_width,filter_depth,num_filters):
+#     ctrx=0;
+#     ctry=0;
+#     my_conv=np.zeros([num_filters,filter_depth,filter_width,filter_width])
+#     for j in range(0,np.shape(my_array)[1],filter_width):
+#         for i in range(0,np.shape(my_array)[0],filter_depth):
+#             my_conv[ctry,:,:,ctrx]=my_array[i:i+filter_depth,j:j+filter_width]
+#             ctrx=ctrx+1
+#         ctrx=0
+#         ctry=ctry+1
+#     converted_conv=my_conv.transpose()
+#     return converted_conv
 
-def resize_to_2D(my_weights):
-    num_filters = np.shape(my_weights)[3]
-    filter_depth = np.shape(my_weights)[2]
-    filter_width = np.shape(my_weights)[0]
-    x= filter_width*filter_depth
-    y=filter_width * num_filters
-    ctrx=0
-    ctry=0
-    temp_copy=np.zeros([x,y])
-    trans=my_weights.transpose()
-    for j in range(0,y,filter_width):
-        for i in range(0,x,filter_depth):
-            temp_copy[i:i+filter_depth,j:j+filter_width]=trans[ctry,:,:,ctrx]
-            ctrx=ctrx+1
-        ctrx=0
-        ctry=ctry+1
-    return temp_copy
+# def resize_to_2D(my_weights):
+#     num_filters = np.shape(my_weights)[3]
+#     filter_depth = np.shape(my_weights)[2]
+#     filter_width = np.shape(my_weights)[0]
+#     x= filter_width*filter_depth
+#     y=filter_width * num_filters
+#     ctrx=0
+#     ctry=0
+#     temp_copy=np.zeros([x,y])
+#     trans=my_weights.transpose()
+#     for j in range(0,y,filter_width):
+#         for i in range(0,x,filter_depth):
+#             temp_copy[i:i+filter_depth,j:j+filter_width]=trans[ctry,:,:,ctrx]
+#             ctrx=ctrx+1
+#         ctrx=0
+#         ctry=ctry+1
+#     return temp_copy
 
 
 def listof_validlayers(weights,layer_dimension):
@@ -60,6 +61,7 @@ def listof_validlayers(weights,layer_dimension):
             a.append(layer_num)
         layer_num +=1
     return a
+
 
 
 def setup_weights_forcompression(model,orderbymetric= True,metric_for_orderby = None, absolute = None,only_some_layers = False,which_layers = None
@@ -431,6 +433,8 @@ class Weights_conv:
             return 1
         else:
             return 0
+    def get_matrix(self):
+        return self.array
 
 def create_matrix(num,rows,cols):
     return np.zeros([rows,cols]) + num
