@@ -1,3 +1,4 @@
 base_models/
 env/
 alexnet_*/
+.DS_Store
