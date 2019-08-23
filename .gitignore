@@ -2,4 +2,5 @@ base_models/
 env/
 alexnet_*/
 .DS_Store
-modelname.h5
+Experiments/
+Important Squeezenets/

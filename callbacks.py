@@ -1,4 +1,5 @@
 import tensorflow as tf
+from data_sn import cifar_data
 from conv_conversions import resize_to_4D,resize_to_2D
 import logging
 from weights_classes import Weights_fc,Weights_conv,check_on_blocksize,setup_weights_forcompression
@@ -13,11 +14,11 @@ formatter =logging.Formatter('%(process)d-%(levelname)s-%(asctime)s-%(message)s'
 file_handler.setFormatter(formatter)
 ResultSummary_CompressionStats.addHandler(file_handler)
 random_key = np.random.randint(0,1000000)
-experiment_key = f"alexnet_mnist_{random_key}"
+experiment_key = f"squeezenet_cifar10_{random_key}"
 
 folder_name = f"{experiment_key}"
 os.mkdir(folder_name)
-os.mkdir(f"./{folder_name}/models")
+os.mkdir(f"./Experiments/{folder_name}/models")
 file_handler_2= logging.FileHandler(f'./{folder_name}/ResultSummary_CompressionStats.log')
 formatter =logging.Formatter('%(process)d-%(levelname)s-%(asctime)s-%(message)s')
 file_handler_2.setFormatter(formatter)
@@ -83,16 +84,16 @@ class OrderBy_Callback(tf.keras.callbacks.Callback):
                 self.ratio_conv =0.5
                 self.absolute_conv = True
                 self.leniency_conv = leniency
-                self.which_layers_conv =[18,24]
-                self.args_dict = {'Block_dim':(8,9)}
+                self.which_layers_conv =[30,42,48]
+                self.args_dict = {'Block_dim':(15,15)}
 
                 self.weight_dict_conv,self.weights_conv,self.list_of_valid_index_conv = setup_weights_forcompression(
                                                     model,orderbymetric = self.orderbymetric_conv,metric_for_orderby =self.metric_conv,
                                             absolute = self.absolute_conv,only_some_layers = True,which_layers=self.which_layers_conv,layer_type =layer_type,
                                             checking_function=check_on_blocksize,args_dict=self.args_dict)
                 ResultSummary_CompressionStats.info(f" CONVOLUTION--INITIAL STATE OF PARAMETERS: Block Size: {self.args_dict['Block_dim']} \n Order : {self.orderbymetric_conv}  Order by metric : {self.metric_conv} \n Leniency: {self.leniency_conv} \n Conversion Type: {self.conversion_type_conv} \n Stepping_Ratio = {self.ratio_conv } \n Absolute: {self.absolute_conv} \n ")
-                # self.test_loss,self.test_acc = model.evaluate(self.test_images,self.test_labels)
-                self.test_acc = 0.9936
+                self.test_loss,self.test_acc = model.evaluate(self.test_images,self.test_labels)
+                # self.test_acc = 0.9936
                 self.curr_test_acc = 100 # Uncomment if fc is not run first.
                 while (self.test_acc - self.leniency_conv*self.test_acc)< self.curr_test_acc:
                     ResultSummary_CompressionStats.info(f"CONVOLUTION --COMPRESSION NUMBER: {self.number_of_compression_conv}")
@@ -116,6 +117,10 @@ class OrderBy_Callback(tf.keras.callbacks.Callback):
                     self.number_of_compression_conv +=1
                     self.curr_test_loss,self.curr_test_acc = model.evaluate(self.test_images,self.test_labels)
                     ResultSummary_CompressionStats.info(f"CONVOLUTION--Loss: {self.curr_test_loss},Accuracy= {self.curr_test_acc}")
+                    if self.number_of_compression_conv == 11:
+                        print(" MODEL SAVED ################# ")
+                        tf.keras.models.save_model(model,"sn_42_48_30_compression_test_15x15.h5")
+                        break
                 # print("CONVOLUTION--TESTING OVER")
 
     def on_train_batch_begin(self,batch,logs=None):
@@ -292,30 +297,38 @@ class OrderBy_Callback(tf.keras.callbacks.Callback):
 
 if __name__ == "__main__":
 
-    model = tf.keras.models.load_model('./base_models/alexnet_usethis_mnist.h5')
+    # model = tf.keras.models.load_model('./base_models/alexnet_usethis_mnist.h5')
 
 
 
 
 
-    mylogger = MyLogger_Class(heading = "######## Alexnet MNIST WALTing Compression\n",
+    mylogger = MyLogger_Class(heading = "######## SQUEEZENET  WALTing Compression\n",
                              experiment_key = experiment_key)
     ResultSummary_CompressionStats.info(mylogger.heading)
     ResultSummary_CompressionStats.info(mylogger.experiment_key)
 
-    train_images,train_labels,test_images,test_labels  = get_data_mnist()
+    # train_images,train_labels,test_images,test_labels  = get_data_mnist()
 
-    # log the dataset numbers here, add later.
-    total_num = 10002
-    batch_size = 64
-    num_of_epochs =10
+    # # log the dataset numbers here, add later.
+    # total_num = 10002
+    # batch_size = 64
+    # num_of_epochs =10
 
-    model.fit(train_images[:total_num],train_labels[:total_num],batch_size=batch_size,
-                           epochs = num_of_epochs,callbacks=[OrderBy_Callback(test_images = test_images,
-                                                                              test_labels = test_labels,
-                                                                              types_of_layers=["conv"])])
+    # model.fit(train_images[:total_num],train_labels[:total_num],batch_size=batch_size,
+    #                        epochs = num_of_epochs,callbacks=[OrderBy_Callback(test_images = test_images,
+    #                                                                           test_labels = test_labels,
+    #                                                                           types_of_layers=["conv"])])
 
-    tf.keras.models.save_model(model,'modelname.h5')
+    # tf.keras.models.save_model(model,'modelname.h5')
+    model = tf.keras.models.load_model('./squeezenet_cifar.h5')
+    x_train,y_train,test_images,test_labels= cifar_data()
+
+    model.fit(x_train,y_train,batch_size = 64,epochs =15,
+              callbacks=[OrderBy_Callback(test_images = test_images,
+                                          test_labels = test_labels,
+                                          leniency=0.05,
+                                          types_of_layers=["conv"])])
 
 
 

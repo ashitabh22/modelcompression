@@ -16,7 +16,7 @@ if __name__ == "__main__":
     for i in range(len(weights)):
        layer_index_size.append((i,np.shape(weights[i]),weights[i].nbytes/2**20))
     layer_index_size.sort(key=operator.itemgetter(2),reverse =True)
-    print(layer_index_size[0:5])
+    print(layer_index_size[0:9])
     print(f"Total size of the weight matrices:{size_of_sn}")
     # model.summary()
 
