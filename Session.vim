@@ -554,7 +554,6 @@ set incsearch
 set langmenu=none
 set laststatus=2
 set mouse=a
-set operatorfunc=<SNR>26_go
 set pyxversion=3
 set runtimepath=
 set runtimepath+=~/.vim
@@ -615,16 +614,16 @@ $argadd callbacks.py
 edit callbacks.py
 set splitbelow splitright
 wincmd _ | wincmd |
-split
-1wincmd k
+vsplit
+1wincmd h
 wincmd w
 wincmd t
 set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 20 + 21) / 43)
-exe '2resize ' . ((&lines * 20 + 21) / 43)
+exe 'vert 1resize ' . ((&columns * 59 + 59) / 119)
+exe 'vert 2resize ' . ((&columns * 59 + 59) / 119)
 argglobal
 nnoremap <buffer> <silent>  b :call pymode#breakpoint#operate(line('.'))
 vnoremap <buffer> <silent>  r :PymodeRun
@@ -780,12 +779,12 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 113 - ((8 * winheight(0) + 10) / 20)
+let s:l = 34 - ((13 * winheight(0) + 14) / 28)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-113
-normal! 020|
+34
+normal! 024|
 wincmd w
 argglobal
 if bufexists("weights_classes.py") | buffer weights_classes.py | else | edit weights_classes.py | endif
@@ -862,8 +861,8 @@ setlocal foldexpr=0
 setlocal foldignore=#
 setlocal foldlevel=1
 setlocal foldmarker={{{,}}}
-set foldmethod=indent
-setlocal foldmethod=indent
+set foldmethod=syntax
+setlocal foldmethod=syntax
 setlocal foldminlines=1
 set foldnestmax=10
 setlocal foldnestmax=10
@@ -943,34 +942,22 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal nowrap
 setlocal wrapmargin=0
-66
-normal! zo
-73
-normal! zo
-308
-normal! zo
-313
-normal! zo
-321
-normal! zo
-322
-normal! zo
-325
-normal! zo
-356
-normal! zo
-let s:l = 79 - ((11 * winheight(0) + 10) / 20)
+let s:l = 346 - ((13 * winheight(0) + 14) / 28)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-79
-normal! 030|
+346
+let s:c = 60 - ((30 * winwidth(0) + 29) / 59)
+if s:c > 0
+  exe 'normal! ' . s:c . '|zs' . 60 . '|'
+else
+  normal! 060|
+endif
 wincmd w
-exe '1resize ' . ((&lines * 20 + 21) / 43)
-exe '2resize ' . ((&lines * 20 + 21) / 43)
+exe 'vert 1resize ' . ((&columns * 59 + 59) / 119)
+exe 'vert 2resize ' . ((&columns * 59 + 59) / 119)
 tabnext 1
 badd +0 callbacks.py
-badd +22 sample_Weights_x.py
 badd +0 weights_classes.py
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf

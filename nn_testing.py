@@ -11,12 +11,12 @@ if __name__ == "__main__":
     # loss,acc= model.evaluate(x_test,y_test)
     # print(f"Loss:{loss}, Accuracy:{acc}")
 
-    check_blocks_list=[(4,18)]
+    check_blocks_list=[(7,43)]
 
     weights = model.get_weights()
 
     block_size = (15,15)
-    current_weight = resize_to_2D(weights[48])
+    current_weight = resize_to_2D(weights[42])
 
     for r in check_blocks_list:
         # print(current_weight[r[0]*block_size[0]:(r[0]+1)*block_size[0],r[1]*block_size[1]:(r[1]+1)*block_size[1]])

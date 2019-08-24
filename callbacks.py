@@ -18,7 +18,7 @@ experiment_key = f"squeezenet_cifar10_{random_key}"
 
 folder_name = f"{experiment_key}"
 os.mkdir(folder_name)
-os.mkdir(f"./Experiments/{folder_name}/models")
+os.mkdir(f"./{folder_name}/models")
 file_handler_2= logging.FileHandler(f'./{folder_name}/ResultSummary_CompressionStats.log')
 formatter =logging.Formatter('%(process)d-%(levelname)s-%(asctime)s-%(message)s')
 file_handler_2.setFormatter(formatter)
@@ -30,6 +30,22 @@ class MyLogger_Class():
         self.experiment_key = experiment_key
 
 
+def show_compression(layer_obj,compressed_blocks,uncompressed_blocks,block_size):
+    print(f"Compressed Blocks: {compressed_blocks}, Uncompressed Blocks: {uncompressed_blocks}")
+    untouched_rows =(layer_obj.original_rows- layer_obj.curr_ending_row_block)
+    untouched_cols =(layer_obj.original_cols- layer_obj.curr_ending_col_block)
+    mem_untouched_rows = untouched_rows*(layer_obj.curr_ending_col_block - layer_obj.curr_starting_col_block)
+    mem_untouched_cols = untouched_cols*(layer_obj.original_rows)
+    total_mem_untouched =( mem_untouched_cols+mem_untouched_rows)*4/2**20
+    memory_uncompressed = uncompressed_blocks*block_size[0]*block_size[1]*4/2**20
+    memory_compressed =compressed_blocks*(block_size[0]+block_size[1])*4/2**20
+
+    new_unique =total_mem_untouched+memory_uncompressed+memory_compressed
+    old_unique = layer_obj.array.nbytes/2**20
+    print(f"Original Space of the layer:{old_unique}")
+    compression = old_unique/new_unique
+
+    return new_unique, old_unique, compression
 class OrderBy_Callback(tf.keras.callbacks.Callback):
 
     def __init__(self,test_images,test_labels,leniency =0.1,types_of_layers=["fc"]):
@@ -70,6 +86,17 @@ class OrderBy_Callback(tf.keras.callbacks.Callback):
                         # ResultSummary_CompressionStats.info(f"Number of uncompressed blocks: {value.list_sorted_active_coords}, Number of compressed blocks: {value.list_sorted_passive_coords}")
                         ResultSummary_CompressionStats.info(f"Number of uncompressed blocks: {len(value.list_sorted_active_coords)}, Number of compressed blocks: {len(value.list_sorted_passive_coords)}")
                         ResultSummary_CompressionStats.info(f"Uncompressed blocks: {value.list_sorted_active_coords[:50]}, Compressed blocks: {value.list_sorted_passive_coords[:50]}")
+                        new_unique,old_unique,ratio = show_compression(value,len(value.list_sorted_passive_coords),len(value.list_sorted_active_coords),
+                                                                       block_size=self.args_dict['Block_dim'])
+                        ResultSummary_CompressionStats.info(f" Compressions Number for ONLY the layer {key}: New Memory: {new_unique}, Original Memory: {old_unique}, Ratio Original/new: {ratio}")
+
+                    ResultSummary_CompressionStats.info("Total Compression inclusive of all Layers that you have selected")
+                    total_new,total_orig,total_ratio =0,0,0
+                    for key,value in self.weight_dict_conv.items():
+                        curr_new,curr_orig,ratio = show_compression(value,len(value.list_sorted_passive_coords),len(list_sorted_active_coords))
+                        total_new = total_new+ curr_new
+                        total_orig = total_orig + curr_orig
+                    ResultSummary_CompressionStats.info(f"Total new space: {total_new}, Total old space {total_orig}, Total Ratio: {total_orig/total_new}")
                     model.set_weights(self.weights)
                     self.number_of_compression +=1
                     self.curr_test_loss,self.curr_test_acc = model.evaluate(self.test_images,self.test_labels)
@@ -107,20 +134,34 @@ class OrderBy_Callback(tf.keras.callbacks.Callback):
                         # ResultSummary_CompressionStats.info(f"Number of uncompressed blocks: {value.list_sorted_active_coords}, Number of compressed blocks: {value.list_sorted_passive_coords}")
                         ResultSummary_CompressionStats.info(f"CONVOLUTION--Number of uncompressed blocks: {len(value.list_sorted_active_coords)}, Number of compressed blocks: {len(value.list_sorted_passive_coords)}")
                         #Printing only first 50
-                        ResultSummary_CompressionStats.info(f"CONVOLUTION--Uncompressed blocks: {value.list_sorted_active_coords[0:50]}, Compressed blocks: {value.list_sorted_passive_coords[:50]}")
+                        ResultSummary_CompressionStats.info(f"CONVOLUTION--Uncompressed blocks: {value.list_sorted_active_coords[-25:]}, Compressed blocks: {value.list_sorted_passive_coords[:50]}")
+                        new_unique,old_unique,ratio = show_compression(value,len(value.list_sorted_passive_coords),len(value.list_sorted_active_coords),
+                                                                       block_size=self.args_dict['Block_dim'])
+                        ResultSummary_CompressionStats.info(f" Compressions Number for ONLY the layer {key}: New Memory: {new_unique}, Original Memory: {old_unique}, Ratio Original/new: {ratio}")
                     # Setting the correct weights back into the model
                     # for layer in which_layers:
                     #     self.weights[layer] = self.weights_conv[layer]
                     # resize from 2d to 4d
-
+                    ResultSummary_CompressionStats.info("Total Compression inclusive of all Layers that you have selected")
+                    total_new,total_orig,total_ratio =0,0,0
+                    for key,value in self.weight_dict_conv.items():
+                        curr_new,curr_orig,ratio = show_compression(value,len(value.list_sorted_passive_coords),len(value.list_sorted_active_coords),
+                                                                    block_size=self.args_dict['Block_dim'])
+                        total_new = total_new+ curr_new
+                        total_orig = total_orig + curr_orig
+                    ResultSummary_CompressionStats.info(f"Total new space: {total_new}, Total old space {total_orig}, Total Ratio: {total_orig/total_new}")
                     model.set_weights(self.weights_conv)
                     self.number_of_compression_conv +=1
                     self.curr_test_loss,self.curr_test_acc = model.evaluate(self.test_images,self.test_labels)
                     ResultSummary_CompressionStats.info(f"CONVOLUTION--Loss: {self.curr_test_loss},Accuracy= {self.curr_test_acc}")
-                    if self.number_of_compression_conv == 11:
-                        print(" MODEL SAVED ################# ")
-                        tf.keras.models.save_model(model,"sn_42_48_30_compression_test_15x15.h5")
+                    compression_status= [len(value.list_sorted_active_coords) for key,value in self.weight_dict_conv.items()  ]
+                    if sum(compression_status) ==0:
+                        ResultSummary_CompressionStats.info(" ####### FORCE STOP ALL COMPRESSION HAVE TAKEN PLACE ########")
+                        tf.keras.models.save_model(model,f"modelsaved_NO_RETRAIN_{experiment_key}.h5")
                         break
+                    # if self.number_of_compression_conv == 11:
+                    #     print(" MODEL SAVED ################# ")
+                    #     break
                 # print("CONVOLUTION--TESTING OVER")
 
     def on_train_batch_begin(self,batch,logs=None):
@@ -245,6 +286,9 @@ class OrderBy_Callback(tf.keras.callbacks.Callback):
                                 value.orderby_centraltendency_conversion(conversion_type = self.conversion_type,ratio = self.ratio )
                                 ResultSummary_CompressionStats.info(f"Number of uncompressed blocks: {len(value.list_sorted_active_coords)}, Number of compressed blocks: {len(value.list_sorted_passive_coords)}")
                                 ResultSummary_CompressionStats.info(f"Uncompressed blocks: {value.list_sorted_active_coords}, Compressed blocks: {value.list_sorted_passive_coords}")
+                                new_unique,old_unique,ratio = show_compression(value,len(value.list_sorted_passive_coords),len(value.list_sorted_active_coords),
+                                                                               block_size=self.args_dict['Block_dim'] )
+                                ResultSummary_CompressionStats.info(f" Compressions Number for ONLY the layer {key}: New Memory: {new_unique}, Original Memory: {old_unique}, Ratio Original/new: {ratio}")
                         model.set_weights(self.weights)
                         self.number_of_compression+=1
                         self.curr_test_loss,self.curr_test_acc = model.evaluate(self.test_images,self.test_labels)
@@ -271,6 +315,9 @@ class OrderBy_Callback(tf.keras.callbacks.Callback):
                             self.weights_conv[int(key)]= resize_to_4D(value.get_matrix(),self.weights_conv[int(key)])
                             # ResultSummary_CompressionStats.info(f"Number of uncompressed blocks: {value.list_sorted_active_coords}, Number of compressed blocks: {value.list_sorted_passive_coords}")
                             ResultSummary_CompressionStats.info(f"CONVOLUTION--Number of uncompressed blocks: {len(value.list_sorted_active_coords)}, Number of compressed blocks: {len(value.list_sorted_passive_coords)}")
+                            new_unique,old_unique,ratio = show_compression(value,len(value.list_sorted_passive_coords),len(value.list_sorted_active_coords),
+                                                                           block_size=self.args_dict['Block_dim'])
+                            ResultSummary_CompressionStats.info(f" Compressions Number for ONLY the layer {key}: New Memory: {new_unique}, Original Memory: {old_unique}, Ratio Original/new: {ratio}")
                             # ResultSummary_CompressionStats.info(f"CONVOLUTION--Uncompressed blocks: {value.list_sorted_active_coords}, Compressed blocks: {value.list_sorted_passive_coords}")
                         # Setting the correct weights back into the model
                         # for layer in which_layers:

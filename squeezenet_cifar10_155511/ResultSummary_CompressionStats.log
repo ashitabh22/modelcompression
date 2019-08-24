@@ -1,0 +1,125 @@
+90158-INFO-2019-08-24 18:12:57,281-######## SQUEEZENET  WALTing Compression
+
+90158-INFO-2019-08-24 18:12:57,283-squeezenet_cifar10_155511
+90158-INFO-2019-08-24 18:13:00,934- USING ORDERBY_CALLBACK 
+90158-INFO-2019-08-24 18:13:01,073- CONVOLUTION--INITIAL STATE OF PARAMETERS: Block Size: (15, 15) 
+ Order : True  Order by metric : mean 
+ Leniency: 0.05 
+ Conversion Type: Toeplitz 
+ Stepping_Ratio = 0.5 
+ Absolute: True 
+ 
+90158-INFO-2019-08-24 18:13:02,988-CONVOLUTION --COMPRESSION NUMBER: 1
+90158-INFO-2019-08-24 18:13:02,988-****** Compressing 30 *********
+90158-INFO-2019-08-24 18:13:02,988-CONVOLUTION-- Using Conversion Type: Toeplitz ,Order By Central Tendency:mean Conversion with ratio: 0.5 
+90158-INFO-2019-08-24 18:13:03,697-CONVOLUTION--Number of uncompressed blocks: 171, Number of compressed blocks: 171
+90158-INFO-2019-08-24 18:13:03,697-CONVOLUTION--Uncompressed blocks: [(5, 5), (5, 37), (5, 21), (4, 29), (3, 3), (5, 29), (5, 14), (4, 34), (5, 2), (3, 28), (3, 25), (3, 12), (4, 25), (4, 35), (3, 30), (4, 8), (5, 28), (4, 7), (4, 30), (3, 17), (3, 15), (3, 14), (4, 14), (3, 36), (4, 36)], Compressed blocks: [(2, 15), (7, 30), (6, 24), (8, 23), (0, 1), (0, 17), (2, 14), (8, 4), (7, 24), (3, 26), (5, 31), (1, 1), (0, 18), (1, 0), (2, 2), (1, 23), (2, 28), (1, 37), (1, 24), (5, 15), (7, 17), (1, 22), (2, 18), (2, 5), (7, 21), (7, 2), (0, 32), (6, 4), (2, 3), (8, 26), (2, 12), (0, 10), (8, 14), (7, 4), (6, 37), (1, 11), (1, 8), (2, 13), (6, 19), (8, 36), (5, 17), (5, 24), (1, 5), (1, 31), (7, 3), (0, 15), (0, 13), (1, 32), (7, 20), (7, 25)]
+90158-INFO-2019-08-24 18:13:03,697- Compressions Number for ONLY the layer 30: New Memory: 0.18920516967773438, Original Memory: 0.158203125, Ratio Original/new: 0.8361458900381056
+90158-INFO-2019-08-24 18:13:03,697-****** Compressing 42 *********
+90158-INFO-2019-08-24 18:13:03,697-CONVOLUTION-- Using Conversion Type: Toeplitz ,Order By Central Tendency:mean Conversion with ratio: 0.5 
+90158-INFO-2019-08-24 18:13:04,986-CONVOLUTION--Number of uncompressed blocks: 306, Number of compressed blocks: 306
+90158-INFO-2019-08-24 18:13:04,986-CONVOLUTION--Uncompressed blocks: [(6, 40), (6, 12), (5, 32), (5, 49), (4, 10), (7, 23), (5, 39), (5, 35), (7, 22), (7, 38), (7, 29), (6, 29), (7, 24), (5, 24), (5, 7), (7, 13), (7, 43), (8, 12), (7, 34), (5, 47), (5, 44), (5, 27), (5, 41), (5, 31), (7, 7)], Compressed blocks: [(0, 46), (11, 21), (3, 15), (9, 40), (3, 0), (10, 16), (3, 40), (11, 10), (1, 21), (10, 29), (8, 16), (1, 28), (11, 42), (0, 1), (10, 44), (11, 24), (0, 38), (2, 37), (10, 26), (11, 11), (11, 22), (11, 44), (8, 23), (1, 26), (8, 30), (0, 25), (0, 21), (11, 14), (9, 3), (9, 19), (1, 31), (2, 20), (2, 30), (8, 33), (10, 45), (4, 11), (9, 16), (9, 28), (0, 18), (9, 39), (6, 42), (9, 44), (0, 7), (11, 41), (9, 13), (9, 14), (1, 4), (9, 50), (11, 29), (8, 45)]
+90158-INFO-2019-08-24 18:13:04,986- Compressions Number for ONLY the layer 42: New Memory: 0.33487701416015625, Original Memory: 0.28125, Ratio Original/new: 0.8398605700225549
+90158-INFO-2019-08-24 18:13:04,986-****** Compressing 48 *********
+90158-INFO-2019-08-24 18:13:04,987-CONVOLUTION-- Using Conversion Type: Toeplitz ,Order By Central Tendency:mean Conversion with ratio: 0.5 
+90158-INFO-2019-08-24 18:13:06,324-CONVOLUTION--Number of uncompressed blocks: 306, Number of compressed blocks: 306
+90158-INFO-2019-08-24 18:13:06,324-CONVOLUTION--Uncompressed blocks: [(7, 48), (7, 3), (5, 39), (5, 9), (6, 50), (7, 39), (6, 26), (6, 21), (5, 26), (7, 31), (7, 1), (5, 21), (5, 8), (4, 17), (7, 43), (5, 22), (5, 31), (6, 41), (6, 13), (5, 17), (7, 27), (6, 31), (7, 26), (6, 27), (7, 17)], Compressed blocks: [(2, 29), (8, 25), (10, 48), (3, 8), (8, 41), (2, 40), (1, 46), (1, 36), (1, 10), (0, 10), (0, 2), (10, 16), (10, 39), (9, 21), (1, 14), (11, 4), (10, 41), (3, 1), (3, 16), (2, 10), (10, 0), (4, 24), (9, 42), (0, 27), (3, 36), (0, 50), (2, 18), (0, 26), (0, 49), (10, 18), (8, 18), (1, 1), (1, 30), (10, 50), (1, 50), (11, 45), (1, 26), (11, 6), (1, 32), (0, 12), (3, 17), (0, 45), (11, 19), (10, 7), (2, 33), (9, 2), (10, 19), (11, 12), (9, 6), (0, 40)]
+90158-INFO-2019-08-24 18:13:06,324- Compressions Number for ONLY the layer 48: New Memory: 0.33487701416015625, Original Memory: 0.28125, Ratio Original/new: 0.8398605700225549
+90158-INFO-2019-08-24 18:13:06,324-Total Compression inclusive of all Layers that you have selected
+90158-INFO-2019-08-24 18:13:06,324-Total new space: 0.8589591979980469, Total old space 0.720703125, Total Ratio: 0.8390423278308485
+90158-INFO-2019-08-24 18:13:08,008-CONVOLUTION--Loss: 1.8207545154571534,Accuracy= 0.37709999084472656
+90158-INFO-2019-08-24 18:13:08,014-CONVOLUTION --COMPRESSION NUMBER: 2
+90158-INFO-2019-08-24 18:13:08,014-****** Compressing 30 *********
+90158-INFO-2019-08-24 18:13:08,014-CONVOLUTION-- Using Conversion Type: Toeplitz ,Order By Central Tendency:mean Conversion with ratio: 0.5 
+90158-INFO-2019-08-24 18:13:08,382-CONVOLUTION--Number of uncompressed blocks: 85, Number of compressed blocks: 257
+90158-INFO-2019-08-24 18:13:08,382-CONVOLUTION--Uncompressed blocks: [(5, 5), (5, 37), (5, 21), (4, 29), (3, 3), (5, 29), (5, 14), (4, 34), (5, 2), (3, 28), (3, 25), (3, 12), (4, 25), (4, 35), (3, 30), (4, 8), (5, 28), (4, 7), (4, 30), (3, 17), (3, 15), (3, 14), (4, 14), (3, 36), (4, 36)], Compressed blocks: [(2, 15), (7, 30), (6, 24), (8, 23), (0, 1), (0, 17), (2, 14), (8, 4), (7, 24), (3, 26), (5, 31), (1, 1), (0, 18), (1, 0), (2, 2), (1, 23), (2, 28), (1, 37), (1, 24), (5, 15), (7, 17), (1, 22), (2, 18), (2, 5), (7, 21), (7, 2), (0, 32), (6, 4), (2, 3), (8, 26), (2, 12), (0, 10), (8, 14), (7, 4), (6, 37), (1, 11), (1, 8), (2, 13), (6, 19), (8, 36), (5, 17), (5, 24), (1, 5), (1, 31), (7, 3), (0, 15), (0, 13), (1, 32), (7, 20), (7, 25)]
+90158-INFO-2019-08-24 18:13:08,382- Compressions Number for ONLY the layer 30: New Memory: 0.12523269653320312, Original Memory: 0.158203125, Ratio Original/new: 1.2632733254135065
+90158-INFO-2019-08-24 18:13:08,382-****** Compressing 42 *********
+90158-INFO-2019-08-24 18:13:08,383-CONVOLUTION-- Using Conversion Type: Toeplitz ,Order By Central Tendency:mean Conversion with ratio: 0.5 
+90158-INFO-2019-08-24 18:13:09,041-CONVOLUTION--Number of uncompressed blocks: 153, Number of compressed blocks: 459
+90158-INFO-2019-08-24 18:13:09,042-CONVOLUTION--Uncompressed blocks: [(6, 40), (6, 12), (5, 32), (5, 49), (4, 10), (7, 23), (5, 39), (5, 35), (7, 22), (7, 38), (7, 29), (6, 29), (7, 24), (5, 24), (5, 7), (7, 13), (7, 43), (8, 12), (7, 34), (5, 47), (5, 44), (5, 27), (5, 41), (5, 31), (7, 7)], Compressed blocks: [(0, 46), (11, 21), (3, 15), (9, 40), (3, 0), (10, 16), (3, 40), (11, 10), (1, 21), (10, 29), (8, 16), (1, 28), (11, 42), (0, 1), (10, 44), (11, 24), (0, 38), (2, 37), (10, 26), (11, 11), (11, 22), (11, 44), (8, 23), (1, 26), (8, 30), (0, 25), (0, 21), (11, 14), (9, 3), (9, 19), (1, 31), (2, 20), (2, 30), (8, 33), (10, 45), (4, 11), (9, 16), (9, 28), (0, 18), (9, 39), (6, 42), (9, 44), (0, 7), (11, 41), (9, 13), (9, 14), (1, 4), (9, 50), (11, 29), (8, 45)]
+90158-INFO-2019-08-24 18:13:09,042- Compressions Number for ONLY the layer 42: New Memory: 0.22106552124023438, Original Memory: 0.28125, Ratio Original/new: 1.2722472433607703
+90158-INFO-2019-08-24 18:13:09,042-****** Compressing 48 *********
+90158-INFO-2019-08-24 18:13:09,042-CONVOLUTION-- Using Conversion Type: Toeplitz ,Order By Central Tendency:mean Conversion with ratio: 0.5 
+90158-INFO-2019-08-24 18:13:09,700-CONVOLUTION--Number of uncompressed blocks: 153, Number of compressed blocks: 459
+90158-INFO-2019-08-24 18:13:09,700-CONVOLUTION--Uncompressed blocks: [(7, 48), (7, 3), (5, 39), (5, 9), (6, 50), (7, 39), (6, 26), (6, 21), (5, 26), (7, 31), (7, 1), (5, 21), (5, 8), (4, 17), (7, 43), (5, 22), (5, 31), (6, 41), (6, 13), (5, 17), (7, 27), (6, 31), (7, 26), (6, 27), (7, 17)], Compressed blocks: [(2, 29), (8, 25), (10, 48), (3, 8), (8, 41), (2, 40), (1, 46), (1, 36), (1, 10), (0, 10), (0, 2), (10, 16), (10, 39), (9, 21), (1, 14), (11, 4), (10, 41), (3, 1), (3, 16), (2, 10), (10, 0), (4, 24), (9, 42), (0, 27), (3, 36), (0, 50), (2, 18), (0, 26), (0, 49), (10, 18), (8, 18), (1, 1), (1, 30), (10, 50), (1, 50), (11, 45), (1, 26), (11, 6), (1, 32), (0, 12), (3, 17), (0, 45), (11, 19), (10, 7), (2, 33), (9, 2), (10, 19), (11, 12), (9, 6), (0, 40)]
+90158-INFO-2019-08-24 18:13:09,700- Compressions Number for ONLY the layer 48: New Memory: 0.22106552124023438, Original Memory: 0.28125, Ratio Original/new: 1.2722472433607703
+90158-INFO-2019-08-24 18:13:09,700-Total Compression inclusive of all Layers that you have selected
+90158-INFO-2019-08-24 18:13:09,701-Total new space: 0.5673637390136719, Total old space 0.720703125, Total Ratio: 1.2702664542025537
+90158-INFO-2019-08-24 18:13:11,395-CONVOLUTION--Loss: 1.8607564052581786,Accuracy= 0.3756999969482422
+90158-INFO-2019-08-24 18:13:11,395-CONVOLUTION --COMPRESSION NUMBER: 3
+90158-INFO-2019-08-24 18:13:11,395-****** Compressing 30 *********
+90158-INFO-2019-08-24 18:13:11,395-CONVOLUTION-- Using Conversion Type: Toeplitz ,Order By Central Tendency:mean Conversion with ratio: 0.5 
+90158-INFO-2019-08-24 18:13:11,579-CONVOLUTION--Number of uncompressed blocks: 42, Number of compressed blocks: 300
+90158-INFO-2019-08-24 18:13:11,580-CONVOLUTION--Uncompressed blocks: [(5, 5), (5, 37), (5, 21), (4, 29), (3, 3), (5, 29), (5, 14), (4, 34), (5, 2), (3, 28), (3, 25), (3, 12), (4, 25), (4, 35), (3, 30), (4, 8), (5, 28), (4, 7), (4, 30), (3, 17), (3, 15), (3, 14), (4, 14), (3, 36), (4, 36)], Compressed blocks: [(2, 15), (7, 30), (6, 24), (8, 23), (0, 1), (0, 17), (2, 14), (8, 4), (7, 24), (3, 26), (5, 31), (1, 1), (0, 18), (1, 0), (2, 2), (1, 23), (2, 28), (1, 37), (1, 24), (5, 15), (7, 17), (1, 22), (2, 18), (2, 5), (7, 21), (7, 2), (0, 32), (6, 4), (2, 3), (8, 26), (2, 12), (0, 10), (8, 14), (7, 4), (6, 37), (1, 11), (1, 8), (2, 13), (6, 19), (8, 36), (5, 17), (5, 24), (1, 5), (1, 31), (7, 3), (0, 15), (0, 13), (1, 32), (7, 20), (7, 25)]
+90158-INFO-2019-08-24 18:13:11,580- Compressions Number for ONLY the layer 30: New Memory: 0.0932464599609375, Original Memory: 0.158203125, Ratio Original/new: 1.6966126656848306
+90158-INFO-2019-08-24 18:13:11,580-****** Compressing 42 *********
+90158-INFO-2019-08-24 18:13:11,580-CONVOLUTION-- Using Conversion Type: Toeplitz ,Order By Central Tendency:mean Conversion with ratio: 0.5 
+90158-INFO-2019-08-24 18:13:11,919-CONVOLUTION--Number of uncompressed blocks: 76, Number of compressed blocks: 536
+90158-INFO-2019-08-24 18:13:11,920-CONVOLUTION--Uncompressed blocks: [(6, 40), (6, 12), (5, 32), (5, 49), (4, 10), (7, 23), (5, 39), (5, 35), (7, 22), (7, 38), (7, 29), (6, 29), (7, 24), (5, 24), (5, 7), (7, 13), (7, 43), (8, 12), (7, 34), (5, 47), (5, 44), (5, 27), (5, 41), (5, 31), (7, 7)], Compressed blocks: [(0, 46), (11, 21), (3, 15), (9, 40), (3, 0), (10, 16), (3, 40), (11, 10), (1, 21), (10, 29), (8, 16), (1, 28), (11, 42), (0, 1), (10, 44), (11, 24), (0, 38), (2, 37), (10, 26), (11, 11), (11, 22), (11, 44), (8, 23), (1, 26), (8, 30), (0, 25), (0, 21), (11, 14), (9, 3), (9, 19), (1, 31), (2, 20), (2, 30), (8, 33), (10, 45), (4, 11), (9, 16), (9, 28), (0, 18), (9, 39), (6, 42), (9, 44), (0, 7), (11, 41), (9, 13), (9, 14), (1, 4), (9, 50), (11, 29), (8, 45)]
+90158-INFO-2019-08-24 18:13:11,920- Compressions Number for ONLY the layer 42: New Memory: 0.163787841796875, Original Memory: 0.28125, Ratio Original/new: 1.7171604248183343
+90158-INFO-2019-08-24 18:13:11,920-****** Compressing 48 *********
+90158-INFO-2019-08-24 18:13:11,920-CONVOLUTION-- Using Conversion Type: Toeplitz ,Order By Central Tendency:mean Conversion with ratio: 0.5 
+90158-INFO-2019-08-24 18:13:12,258-CONVOLUTION--Number of uncompressed blocks: 76, Number of compressed blocks: 536
+90158-INFO-2019-08-24 18:13:12,258-CONVOLUTION--Uncompressed blocks: [(7, 48), (7, 3), (5, 39), (5, 9), (6, 50), (7, 39), (6, 26), (6, 21), (5, 26), (7, 31), (7, 1), (5, 21), (5, 8), (4, 17), (7, 43), (5, 22), (5, 31), (6, 41), (6, 13), (5, 17), (7, 27), (6, 31), (7, 26), (6, 27), (7, 17)], Compressed blocks: [(2, 29), (8, 25), (10, 48), (3, 8), (8, 41), (2, 40), (1, 46), (1, 36), (1, 10), (0, 10), (0, 2), (10, 16), (10, 39), (9, 21), (1, 14), (11, 4), (10, 41), (3, 1), (3, 16), (2, 10), (10, 0), (4, 24), (9, 42), (0, 27), (3, 36), (0, 50), (2, 18), (0, 26), (0, 49), (10, 18), (8, 18), (1, 1), (1, 30), (10, 50), (1, 50), (11, 45), (1, 26), (11, 6), (1, 32), (0, 12), (3, 17), (0, 45), (11, 19), (10, 7), (2, 33), (9, 2), (10, 19), (11, 12), (9, 6), (0, 40)]
+90158-INFO-2019-08-24 18:13:12,258- Compressions Number for ONLY the layer 48: New Memory: 0.163787841796875, Original Memory: 0.28125, Ratio Original/new: 1.7171604248183343
+90158-INFO-2019-08-24 18:13:12,258-Total Compression inclusive of all Layers that you have selected
+90158-INFO-2019-08-24 18:13:12,259-Total new space: 0.4208221435546875, Total old space 0.720703125, Total Ratio: 1.7126074186881324
+90158-INFO-2019-08-24 18:13:13,972-CONVOLUTION--Loss: 1.9358946739196778,Accuracy= 0.36910000443458557
+90158-INFO-2019-08-24 18:13:13,973-CONVOLUTION --COMPRESSION NUMBER: 4
+90158-INFO-2019-08-24 18:13:13,973-****** Compressing 30 *********
+90158-INFO-2019-08-24 18:13:13,973-CONVOLUTION-- Using Conversion Type: Toeplitz ,Order By Central Tendency:mean Conversion with ratio: 0.5 
+90158-INFO-2019-08-24 18:13:14,069-CONVOLUTION--Number of uncompressed blocks: 21, Number of compressed blocks: 321
+90158-INFO-2019-08-24 18:13:14,069-CONVOLUTION--Uncompressed blocks: [(3, 3), (5, 29), (5, 14), (4, 34), (5, 2), (3, 28), (3, 25), (3, 12), (4, 25), (4, 35), (3, 30), (4, 8), (5, 28), (4, 7), (4, 30), (3, 17), (3, 15), (3, 14), (4, 14), (3, 36), (4, 36)], Compressed blocks: [(2, 15), (7, 30), (6, 24), (8, 23), (0, 1), (0, 17), (2, 14), (8, 4), (7, 24), (3, 26), (5, 31), (1, 1), (0, 18), (1, 0), (2, 2), (1, 23), (2, 28), (1, 37), (1, 24), (5, 15), (7, 17), (1, 22), (2, 18), (2, 5), (7, 21), (7, 2), (0, 32), (6, 4), (2, 3), (8, 26), (2, 12), (0, 10), (8, 14), (7, 4), (6, 37), (1, 11), (1, 8), (2, 13), (6, 19), (8, 36), (5, 17), (5, 24), (1, 5), (1, 31), (7, 3), (0, 15), (0, 13), (1, 32), (7, 20), (7, 25)]
+90158-INFO-2019-08-24 18:13:14,070- Compressions Number for ONLY the layer 30: New Memory: 0.07762527465820312, Original Memory: 0.158203125, Ratio Original/new: 2.0380362671384344
+90158-INFO-2019-08-24 18:13:14,070-****** Compressing 42 *********
+90158-INFO-2019-08-24 18:13:14,070-CONVOLUTION-- Using Conversion Type: Toeplitz ,Order By Central Tendency:mean Conversion with ratio: 0.5 
+90158-INFO-2019-08-24 18:13:14,239-CONVOLUTION--Number of uncompressed blocks: 38, Number of compressed blocks: 574
+90158-INFO-2019-08-24 18:13:14,239-CONVOLUTION--Uncompressed blocks: [(6, 40), (6, 12), (5, 32), (5, 49), (4, 10), (7, 23), (5, 39), (5, 35), (7, 22), (7, 38), (7, 29), (6, 29), (7, 24), (5, 24), (5, 7), (7, 13), (7, 43), (8, 12), (7, 34), (5, 47), (5, 44), (5, 27), (5, 41), (5, 31), (7, 7)], Compressed blocks: [(0, 46), (11, 21), (3, 15), (9, 40), (3, 0), (10, 16), (3, 40), (11, 10), (1, 21), (10, 29), (8, 16), (1, 28), (11, 42), (0, 1), (10, 44), (11, 24), (0, 38), (2, 37), (10, 26), (11, 11), (11, 22), (11, 44), (8, 23), (1, 26), (8, 30), (0, 25), (0, 21), (11, 14), (9, 3), (9, 19), (1, 31), (2, 20), (2, 30), (8, 33), (10, 45), (4, 11), (9, 16), (9, 28), (0, 18), (9, 39), (6, 42), (9, 44), (0, 7), (11, 41), (9, 13), (9, 14), (1, 4), (9, 50), (11, 29), (8, 45)]
+90158-INFO-2019-08-24 18:13:14,240- Compressions Number for ONLY the layer 42: New Memory: 0.13552093505859375, Original Memory: 0.28125, Ratio Original/new: 2.0753251140010134
+90158-INFO-2019-08-24 18:13:14,240-****** Compressing 48 *********
+90158-INFO-2019-08-24 18:13:14,240-CONVOLUTION-- Using Conversion Type: Toeplitz ,Order By Central Tendency:mean Conversion with ratio: 0.5 
+90158-INFO-2019-08-24 18:13:14,408-CONVOLUTION--Number of uncompressed blocks: 38, Number of compressed blocks: 574
+90158-INFO-2019-08-24 18:13:14,408-CONVOLUTION--Uncompressed blocks: [(7, 48), (7, 3), (5, 39), (5, 9), (6, 50), (7, 39), (6, 26), (6, 21), (5, 26), (7, 31), (7, 1), (5, 21), (5, 8), (4, 17), (7, 43), (5, 22), (5, 31), (6, 41), (6, 13), (5, 17), (7, 27), (6, 31), (7, 26), (6, 27), (7, 17)], Compressed blocks: [(2, 29), (8, 25), (10, 48), (3, 8), (8, 41), (2, 40), (1, 46), (1, 36), (1, 10), (0, 10), (0, 2), (10, 16), (10, 39), (9, 21), (1, 14), (11, 4), (10, 41), (3, 1), (3, 16), (2, 10), (10, 0), (4, 24), (9, 42), (0, 27), (3, 36), (0, 50), (2, 18), (0, 26), (0, 49), (10, 18), (8, 18), (1, 1), (1, 30), (10, 50), (1, 50), (11, 45), (1, 26), (11, 6), (1, 32), (0, 12), (3, 17), (0, 45), (11, 19), (10, 7), (2, 33), (9, 2), (10, 19), (11, 12), (9, 6), (0, 40)]
+90158-INFO-2019-08-24 18:13:14,408- Compressions Number for ONLY the layer 48: New Memory: 0.13552093505859375, Original Memory: 0.28125, Ratio Original/new: 2.0753251140010134
+90158-INFO-2019-08-24 18:13:14,408-Total Compression inclusive of all Layers that you have selected
+90158-INFO-2019-08-24 18:13:14,409-Total new space: 0.3486671447753906, Total old space 0.720703125, Total Ratio: 2.067023336724981
+90158-INFO-2019-08-24 18:13:16,120-CONVOLUTION--Loss: 1.9880983409881592,Accuracy= 0.36390000581741333
+90158-INFO-2019-08-24 18:13:16,120-CONVOLUTION --COMPRESSION NUMBER: 5
+90158-INFO-2019-08-24 18:13:16,120-****** Compressing 30 *********
+90158-INFO-2019-08-24 18:13:16,120-CONVOLUTION-- Using Conversion Type: Toeplitz ,Order By Central Tendency:mean Conversion with ratio: 0.5 
+90158-INFO-2019-08-24 18:13:16,174-CONVOLUTION--Number of uncompressed blocks: 10, Number of compressed blocks: 332
+90158-INFO-2019-08-24 18:13:16,174-CONVOLUTION--Uncompressed blocks: [(4, 8), (5, 28), (4, 7), (4, 30), (3, 17), (3, 15), (3, 14), (4, 14), (3, 36), (4, 36)], Compressed blocks: [(2, 15), (7, 30), (6, 24), (8, 23), (0, 1), (0, 17), (2, 14), (8, 4), (7, 24), (3, 26), (5, 31), (1, 1), (0, 18), (1, 0), (2, 2), (1, 23), (2, 28), (1, 37), (1, 24), (5, 15), (7, 17), (1, 22), (2, 18), (2, 5), (7, 21), (7, 2), (0, 32), (6, 4), (2, 3), (8, 26), (2, 12), (0, 10), (8, 14), (7, 4), (6, 37), (1, 11), (1, 8), (2, 13), (6, 19), (8, 36), (5, 17), (5, 24), (1, 5), (1, 31), (7, 3), (0, 15), (0, 13), (1, 32), (7, 20), (7, 25)]
+90158-INFO-2019-08-24 18:13:16,174- Compressions Number for ONLY the layer 30: New Memory: 0.0694427490234375, Original Memory: 0.158203125, Ratio Original/new: 2.278180619644034
+90158-INFO-2019-08-24 18:13:16,174-****** Compressing 42 *********
+90158-INFO-2019-08-24 18:13:16,174-CONVOLUTION-- Using Conversion Type: Toeplitz ,Order By Central Tendency:mean Conversion with ratio: 0.5 
+90158-INFO-2019-08-24 18:13:16,264-CONVOLUTION--Number of uncompressed blocks: 19, Number of compressed blocks: 593
+90158-INFO-2019-08-24 18:13:16,265-CONVOLUTION--Uncompressed blocks: [(5, 39), (5, 35), (7, 22), (7, 38), (7, 29), (6, 29), (7, 24), (5, 24), (5, 7), (7, 13), (7, 43), (8, 12), (7, 34), (5, 47), (5, 44), (5, 27), (5, 41), (5, 31), (7, 7)], Compressed blocks: [(0, 46), (11, 21), (3, 15), (9, 40), (3, 0), (10, 16), (3, 40), (11, 10), (1, 21), (10, 29), (8, 16), (1, 28), (11, 42), (0, 1), (10, 44), (11, 24), (0, 38), (2, 37), (10, 26), (11, 11), (11, 22), (11, 44), (8, 23), (1, 26), (8, 30), (0, 25), (0, 21), (11, 14), (9, 3), (9, 19), (1, 31), (2, 20), (2, 30), (8, 33), (10, 45), (4, 11), (9, 16), (9, 28), (0, 18), (9, 39), (6, 42), (9, 44), (0, 7), (11, 41), (9, 13), (9, 14), (1, 4), (9, 50), (11, 29), (8, 45)]
+90158-INFO-2019-08-24 18:13:16,265- Compressions Number for ONLY the layer 42: New Memory: 0.12138748168945312, Original Memory: 0.28125, Ratio Original/new: 2.316960497784482
+90158-INFO-2019-08-24 18:13:16,265-****** Compressing 48 *********
+90158-INFO-2019-08-24 18:13:16,265-CONVOLUTION-- Using Conversion Type: Toeplitz ,Order By Central Tendency:mean Conversion with ratio: 0.5 
+90158-INFO-2019-08-24 18:13:16,356-CONVOLUTION--Number of uncompressed blocks: 19, Number of compressed blocks: 593
+90158-INFO-2019-08-24 18:13:16,356-CONVOLUTION--Uncompressed blocks: [(6, 26), (6, 21), (5, 26), (7, 31), (7, 1), (5, 21), (5, 8), (4, 17), (7, 43), (5, 22), (5, 31), (6, 41), (6, 13), (5, 17), (7, 27), (6, 31), (7, 26), (6, 27), (7, 17)], Compressed blocks: [(2, 29), (8, 25), (10, 48), (3, 8), (8, 41), (2, 40), (1, 46), (1, 36), (1, 10), (0, 10), (0, 2), (10, 16), (10, 39), (9, 21), (1, 14), (11, 4), (10, 41), (3, 1), (3, 16), (2, 10), (10, 0), (4, 24), (9, 42), (0, 27), (3, 36), (0, 50), (2, 18), (0, 26), (0, 49), (10, 18), (8, 18), (1, 1), (1, 30), (10, 50), (1, 50), (11, 45), (1, 26), (11, 6), (1, 32), (0, 12), (3, 17), (0, 45), (11, 19), (10, 7), (2, 33), (9, 2), (10, 19), (11, 12), (9, 6), (0, 40)]
+90158-INFO-2019-08-24 18:13:16,356- Compressions Number for ONLY the layer 48: New Memory: 0.12138748168945312, Original Memory: 0.28125, Ratio Original/new: 2.316960497784482
+90158-INFO-2019-08-24 18:13:16,356-Total Compression inclusive of all Layers that you have selected
+90158-INFO-2019-08-24 18:13:16,357-Total new space: 0.31221771240234375, Total old space 0.720703125, Total Ratio: 2.308335166043545
+90158-INFO-2019-08-24 18:13:18,146-CONVOLUTION--Loss: 2.027145135498047,Accuracy= 0.3596999943256378
+90158-INFO-2019-08-24 18:13:18,152-CONVOLUTION --COMPRESSION NUMBER: 6
+90158-INFO-2019-08-24 18:13:18,152-****** Compressing 30 *********
+90158-INFO-2019-08-24 18:13:18,152-CONVOLUTION-- Using Conversion Type: Toeplitz ,Order By Central Tendency:mean Conversion with ratio: 0.5 
+90158-INFO-2019-08-24 18:13:18,183-CONVOLUTION--Number of uncompressed blocks: 5, Number of compressed blocks: 337
+90158-INFO-2019-08-24 18:13:18,183-CONVOLUTION--Uncompressed blocks: [(3, 15), (3, 14), (4, 14), (3, 36), (4, 36)], Compressed blocks: [(2, 15), (7, 30), (6, 24), (8, 23), (0, 1), (0, 17), (2, 14), (8, 4), (7, 24), (3, 26), (5, 31), (1, 1), (0, 18), (1, 0), (2, 2), (1, 23), (2, 28), (1, 37), (1, 24), (5, 15), (7, 17), (1, 22), (2, 18), (2, 5), (7, 21), (7, 2), (0, 32), (6, 4), (2, 3), (8, 26), (2, 12), (0, 10), (8, 14), (7, 4), (6, 37), (1, 11), (1, 8), (2, 13), (6, 19), (8, 36), (5, 17), (5, 24), (1, 5), (1, 31), (7, 3), (0, 15), (0, 13), (1, 32), (7, 20), (7, 25)]
+90158-INFO-2019-08-24 18:13:18,183- Compressions Number for ONLY the layer 30: New Memory: 0.06572341918945312, Original Memory: 0.158203125, Ratio Original/new: 2.4071043008880375
+90158-INFO-2019-08-24 18:13:18,183-****** Compressing 42 *********
+90158-INFO-2019-08-24 18:13:18,184-CONVOLUTION-- Using Conversion Type: Toeplitz ,Order By Central Tendency:mean Conversion with ratio: 0.5 
+90158-INFO-2019-08-24 18:13:18,238-CONVOLUTION--Number of uncompressed blocks: 9, Number of compressed blocks: 603
+90158-INFO-2019-08-24 18:13:18,238-CONVOLUTION--Uncompressed blocks: [(7, 43), (8, 12), (7, 34), (5, 47), (5, 44), (5, 27), (5, 41), (5, 31), (7, 7)], Compressed blocks: [(0, 46), (11, 21), (3, 15), (9, 40), (3, 0), (10, 16), (3, 40), (11, 10), (1, 21), (10, 29), (8, 16), (1, 28), (11, 42), (0, 1), (10, 44), (11, 24), (0, 38), (2, 37), (10, 26), (11, 11), (11, 22), (11, 44), (8, 23), (1, 26), (8, 30), (0, 25), (0, 21), (11, 14), (9, 3), (9, 19), (1, 31), (2, 20), (2, 30), (8, 33), (10, 45), (4, 11), (9, 16), (9, 28), (0, 18), (9, 39), (6, 42), (9, 44), (0, 7), (11, 41), (9, 13), (9, 14), (1, 4), (9, 50), (11, 29), (8, 45)]
+90158-INFO-2019-08-24 18:13:18,238- Compressions Number for ONLY the layer 42: New Memory: 0.11394882202148438, Original Memory: 0.28125, Ratio Original/new: 2.468213317264236
+90158-INFO-2019-08-24 18:13:18,238-****** Compressing 48 *********
+90158-INFO-2019-08-24 18:13:18,239-CONVOLUTION-- Using Conversion Type: Toeplitz ,Order By Central Tendency:mean Conversion with ratio: 0.5 
+90158-INFO-2019-08-24 18:13:18,287-CONVOLUTION--Number of uncompressed blocks: 9, Number of compressed blocks: 603
+90158-INFO-2019-08-24 18:13:18,287-CONVOLUTION--Uncompressed blocks: [(5, 31), (6, 41), (6, 13), (5, 17), (7, 27), (6, 31), (7, 26), (6, 27), (7, 17)], Compressed blocks: [(2, 29), (8, 25), (10, 48), (3, 8), (8, 41), (2, 40), (1, 46), (1, 36), (1, 10), (0, 10), (0, 2), (10, 16), (10, 39), (9, 21), (1, 14), (11, 4), (10, 41), (3, 1), (3, 16), (2, 10), (10, 0), (4, 24), (9, 42), (0, 27), (3, 36), (0, 50), (2, 18), (0, 26), (0, 49), (10, 18), (8, 18), (1, 1), (1, 30), (10, 50), (1, 50), (11, 45), (1, 26), (11, 6), (1, 32), (0, 12), (3, 17), (0, 45), (11, 19), (10, 7), (2, 33), (9, 2), (10, 19), (11, 12), (9, 6), (0, 40)]
+90158-INFO-2019-08-24 18:13:18,287- Compressions Number for ONLY the layer 48: New Memory: 0.11394882202148438, Original Memory: 0.28125, Ratio Original/new: 2.468213317264236
+90158-INFO-2019-08-24 18:13:18,287-Total Compression inclusive of all Layers that you have selected
+90158-INFO-2019-08-24 18:13:18,287-Total new space: 0.2936210632324219, Total old space 0.720703125, Total Ratio: 2.454534824804147
+90158-INFO-2019-08-24 18:13:20,032-CONVOLUTION--Loss: 2.0502572662353518,Accuracy= 0.35569998621940613
