@@ -256,11 +256,11 @@ def convert(arr,block_size=(3,4) , central_tendency = "win_mean",cutting_ratio =
         col_end = block_size[1] -1
         while ( col_end < cols) :
             curr_arr = np.copy(arr[row_begin:row_end+1,col_begin:col_end+1] )
-            if(conversion_matrix=="block_cir" and block_size[0]==block_size[1]):
+            if(conversion_matrix=="BCM" and block_size[0]==block_size[1]):
                 mid_answer=tobc(curr_arr=curr_arr,block_size=block_size,central_tendency=central_tendency,cutting_ratio=cutting_ratio,percentile=percentile)
             elif(conversion_matrix=="Toeplitz"):
                 mid_answer=toeplitz_faster(curr_arr=curr_arr,central_tendency=central_tendency,cutting_ratio =cutting_ratio,percentile =percentile)
-            else:
+            elif(conversion_matrix=="Hankel"):
                 mid_answer=to_hankel(curr_arr=curr_arr,central_tendency=central_tendency,cutting_ratio =cutting_ratio,percentile =percentile)
                 print("Entering hankel")
 

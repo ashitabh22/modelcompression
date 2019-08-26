@@ -4,3 +4,4 @@ alexnet_*/
 .DS_Store
 Experiments/
 Important Squeezenets/
+resnet_trial.h5

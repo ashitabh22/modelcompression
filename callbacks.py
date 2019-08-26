@@ -107,11 +107,11 @@ class OrderBy_Callback(tf.keras.callbacks.Callback):
                 # leniency = 0.1
                 # curr_test_acc = 100
                 self.number_of_compression_conv =1
-                self.conversion_type_conv = "Toeplitz"
+                self.conversion_type_conv = "Toeplitz" # Other options, "BCM", "Hankel"
                 self.ratio_conv =0.5
                 self.absolute_conv = True
                 self.leniency_conv = leniency
-                self.which_layers_conv =[30,42,48]
+                self.which_layers_conv =[92]
                 self.args_dict = {'Block_dim':(15,15)}
 
                 self.weight_dict_conv,self.weights_conv,self.list_of_valid_index_conv = setup_weights_forcompression(
@@ -119,8 +119,8 @@ class OrderBy_Callback(tf.keras.callbacks.Callback):
                                             absolute = self.absolute_conv,only_some_layers = True,which_layers=self.which_layers_conv,layer_type =layer_type,
                                             checking_function=check_on_blocksize,args_dict=self.args_dict)
                 ResultSummary_CompressionStats.info(f" CONVOLUTION--INITIAL STATE OF PARAMETERS: Block Size: {self.args_dict['Block_dim']} \n Order : {self.orderbymetric_conv}  Order by metric : {self.metric_conv} \n Leniency: {self.leniency_conv} \n Conversion Type: {self.conversion_type_conv} \n Stepping_Ratio = {self.ratio_conv } \n Absolute: {self.absolute_conv} \n ")
-                self.test_loss,self.test_acc = model.evaluate(self.test_images,self.test_labels)
-                # self.test_acc = 0.9936
+                # self.test_loss,self.test_acc = model.evaluate(self.test_images,self.test_labels)
+                self.test_acc = 0.9936
                 self.curr_test_acc = 100 # Uncomment if fc is not run first.
                 while (self.test_acc - self.leniency_conv*self.test_acc)< self.curr_test_acc:
                     ResultSummary_CompressionStats.info(f"CONVOLUTION --COMPRESSION NUMBER: {self.number_of_compression_conv}")
@@ -368,7 +368,7 @@ if __name__ == "__main__":
     #                                                                           types_of_layers=["conv"])])
 
     # tf.keras.models.save_model(model,'modelname.h5')
-    model = tf.keras.models.load_model('./squeezenet_cifar.h5')
+    model = tf.keras.models.load_model('./resnet_trial.h5')
     x_train,y_train,test_images,test_labels= cifar_data()
 
     model.fit(x_train,y_train,batch_size = 64,epochs =15,
